@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WindowsForFunClass</class>
+ <widget class="QWidget" name="WindowsForFunClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>809</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OCR-Tesseract</string>
+  </property>
+  <widget class="QLabel" name="labelshow">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>20</y>
+     <width>461</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>                             Image display area</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_stop">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>270</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Stop</string>
+   </property>
+   <property name="icon">
+    <iconset resource="WindowsForFun.qrc">
+     <normaloff>:/WindowsForFun/Stop.ico</normaloff>:/WindowsForFun/Stop.ico</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_browse">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>90</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Browse</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>390</y>
+     <width>751</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>仿宋</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="plainText">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_start">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>180</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Start</string>
+   </property>
+   <property name="icon">
+    <iconset resource="WindowsForFun.qrc">
+     <normaloff>:/WindowsForFun/Start.ico</normaloff>:/WindowsForFun/Start.ico</iconset>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="WindowsForFun.qrc"/>
+ </resources>
+ <connections/>
+</ui>
