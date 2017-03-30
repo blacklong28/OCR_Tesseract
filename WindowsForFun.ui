@@ -67,8 +67,8 @@
    </property>
    <property name="font">
     <font>
-     <family>仿宋</family>
-     <pointsize>14</pointsize>
+     <family>Times New Roman</family>
+     <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
