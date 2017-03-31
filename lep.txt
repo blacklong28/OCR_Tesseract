@@ -1,0 +1,56 @@
+make g++ -o myprogram main.cpp -llept -ltesseract `pkg-config opencv --cflags --libs`
+
+dencies
+Autotools Leptonica
+If they are not already installed, you need the following libraries (Ubuntu 16.04/14.04):
+sudo apt-get install autoconf automake libtool
+sudo apt-get install autoconf-archive
+sudo apt-get install pkg-config
+sudo apt-get install libpng12-dev
+sudo apt-get install libjpeg8-dev
+sudo apt-get install libtiff5-dev
+sudo apt-get install zlib1g-dev
+if you plan to install the training tools, you also need the following libraries:
+sudo apt-get install libicu-dev
+sudo apt-get install libpango1.0-dev
+sudo apt-get install libcairo2-dev
+You also need to install Leptonica.
+One option is to install the distro's Leptonica package:
+sudo apt-get install libleptonica-dev
+but if you are using an oldish version of Linux, the Leptonica version may be too old, so you will need to build from source.
+Tesseract versions and the minimum version of Leptonica required:
+Tesseract	Leptonica	Ubuntu
+4.00	1.74.0	Must build from source
+3.04	1.71	Ubuntu 16.043.03	1.70	Ubuntu 14.043.02	1.69	Ubuntu 12.043.01	1.67	
+The sources are at http://www.leptonica.org/. The instructions at Leptonica README are clear, but basically it is as described in Compilation below.
+Ensure that the development headers for Leptonica are installed before compiling Tesseract. Note that if building Leptonica from source, you may need to ensure that /usr/local/lib is in your library path. This is a standard Linux bug, and the information at Stackoverflow is very helpful.
+Compilation
+Tesseract uses a standard autotools based build system, so the compilation process should be familiar.
+git clone --depth 1 https://github.com/tesseract-ocr/tesseract.git
+cd tesseract
+./autogen.sh
+./configure --enable-debug
+LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/include" make
+sudo make install
+sudo ldconfig
+If configure fails with an error like "syntax error near unexpected token `-mavx,'" and/or AX_CHECK_COMPILE_FLAG(...) then double check you have installed autoconf-archive.
+If configure fails with such error "configure: error: Leptonica 1.74 or higher is required. Try to install libleptonica-dev package." and you are sure you have installed leptonica (for example in /usr/local) then probably pkg-config is not looking at your install folder (check with "pkg-config --variable pc_path pkg-config"). A solution is to set PKG_CONFIG_PATH : example :PKG_CONFIG_PATH=/usr/local/lib/pkgconfig LIBLEPT_HEADERSDIR=/usr/local/include ./configure --with-extra-includes=/usr/local/include --with-extra-libraries=/usr/local/lib
+Since we have to compile leptonica to use version 1.74, we should use LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/include" make instead of make for Tesseract.
+安装version 1.74 的坑。直接用：
+sudo apt-get install libleptonica-dev 
+安装的是1.73版本，而且不能够升级到更高版本，于是只有直接下载编译了。下载地址：
+http://www.leptonica.com/download.html
+下载下来后编译安装：
+(2) Using autoconf (supported by James Le Cuirot).
+        Run ./configure in this directory to
+        build Makefiles here and in src.  Autoconf handles the
+        following automatically:
+            * architecture endianness
+            * enabling Leptonica I/O image read/write functions that
+              depend on external libraries (if the libraries exist)
+            * enabling functions for redirecting formatted image stream
+              I/O to memory (on Linux only)
+        After running ./configure: make; make install.  There's also
+        a 'make check' for testing.
+
+其中可能会缺其他的依赖库，一一安装解决。
