@@ -1,5 +1,8 @@
 make g++ -o myprogram main.cpp -llept -ltesseract `pkg-config opencv --cflags --libs`
 
+source  https://github.com/blacklong617/OCR_Tesseract
+
+
 dencies
 Autotools Leptonica
 If they are not already installed, you need the following libraries (Ubuntu 16.04/14.04):
